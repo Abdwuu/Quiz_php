@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -6,8 +7,12 @@ body {
     box-sizing: border-box;
 }
 
+section {
+    padding: 20px;
+}
+
 .container {
-    max-width: 800px;
+    max-width: 600px;
     margin: 50px auto;
     background-color: #fff;
     padding: 20px;
@@ -20,22 +25,17 @@ h1 {
     color: #333;
 }
 
-.question {
-    margin-bottom: 20px;
-}
-
-.options {
-    margin-top: 10px;
-}
-
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
-input[type="radio"] {
-    margin-right: 5px;
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
 button {
@@ -45,6 +45,8 @@ button {
     padding: 10px 15px;
     cursor: pointer;
     border-radius: 5px;
+    display: block;
+    margin: 0 auto;
 }
 
 button:hover {
