@@ -1,3 +1,26 @@
+<?php
+
+require '../BD/php/quizz.php';
+$questions = get_questions();
+
+$list_questions = [];
+
+foreach ($questions as $question) {
+    $list_questions[] = new Option($question['question']);
+}
+
+$select = new Select('question', 'Choisissez une question', $list_questions);
+
+// creation du formulaire
+$form = new Form();
+foreach ($questions as $question) {
+    $form->addSelect(new Select("1", $question['question'], $list_questions));
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,15 +37,12 @@
 <div class="container">
     <h1>Choisissez un Quizz</h1>
 
-    <form action="quiz.php" method="get">
-        <label for="quiz">Sélectionnez un quizz :</label>
-        <select id="quiz" name="quiz">
-            <option value="quiz1">Quiz sur les Dessins Animés</option>
-            <!-- Ajoutez d'autres options pour différents quizz -->
-        </select>
+    <?php
+    echo $form->render();
+    ?>
+    
 
-        <button type="submit">Commencer le Quizz</button>
-    </form>
+
 </div>
 
 </body>
