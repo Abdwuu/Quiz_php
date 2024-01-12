@@ -4,11 +4,16 @@ include 'IRender.php';
 class Form implements IRender
 {
     protected array $inputs;
+    protected string $method;
+    protected string $action;
 
-    public function __construct(array $inputs)
+    public function __construct(array $inputs, string $method = 'get', string $action = '')
     {
         $this->inputs = $inputs;
+        $this->method = $method;
+        $this->action = $action;
     }
+
 
     /**
      * @return array

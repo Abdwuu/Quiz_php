@@ -2,7 +2,7 @@
 
 -- Table QUIZZES
 CREATE TABLE QUIZZES (
-    QuizID INT PRIMARY KEY,
+    QuizID INT AUTO_INCREMENT PRIMARY KEY,
     Titre VARCHAR(255),
     Description TEXT,
     TempsLimite INT, -- Temps limite en secondes (si applicable)

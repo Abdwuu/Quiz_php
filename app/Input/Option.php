@@ -18,4 +18,10 @@ class Option implements IRender
             return $html;
         }
 
+        public function __toString(): string
+        {
+            // retourne la valeur de l'option en string
+            return $this->value;
+        }
+
     }
