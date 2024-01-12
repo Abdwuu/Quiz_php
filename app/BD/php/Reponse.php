@@ -1,7 +1,7 @@
 <?php
 
 require_once 'IRender.php';
-require ('IRender.php');
+require_once('IRender.php');
 
 
 class Reponse implements IRender{

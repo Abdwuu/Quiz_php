@@ -1,7 +1,8 @@
 <?php
 
-require ('connexion.php');
-require ('IRender.php');
+require_once ('connexion.php');
+require_once ('Reponse.php');
+require_once ('IRender.php');
 
 class Question implements IRender{
 
@@ -57,10 +58,10 @@ class Question implements IRender{
     public function setLesReponses(){
 
         $bd = connect_bd();
-        $requete = "select * from REPONSES where idQuestion = '$this->idQuestion';";
+        $requete = "select * from REPONSES where QuestionID = '$this->idQuestion';";
         $resultat = $bd->query($requete);
         foreach ($resultat as $value) {
-            $this->lesReponses[] = new Reponse(intval($value['idReponse']),intval($value['idQuestion']),$value['enonce'],boolval($value['valide']));
+            $this->lesReponses[] = new Reponse(intval($value['ReponseID']),intval($value['QuestionID']),$value['TexteReponse'],boolval($value['EstCorrecte']));
         }
 
 

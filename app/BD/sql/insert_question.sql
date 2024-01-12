@@ -6,17 +6,17 @@ VALUES
     (3, "Quiz sur les jeux vidéo", "Testez vos connaissances sur les jeux vidéo", 300, 'Difficulté: Difficile');
 
 -- Ajout de QUESTIONS pour le quiz sur les dessins animés
-INSERT INTO QUESTIONS (QuestionID, QuizID, Enonce, TypeQuestion, AutresProprietes)
+INSERT INTO QUESTIONS (QuestionID, QuizID, Enonce, TypeQuestion,lesPoints, AutresProprietes)
 VALUES
-    (1, 1, "Qui est l\'éternel ennemi de Tom dans Tom et Jerry ?", 'Choix multiple', 'Difficulté: Facile'),
-    (2, 1, 'Quel personnage vit dans un ananas sous la mer ?', 'Choix multiple', 'Difficulté: Facile'),
-    (3, 1, 'Quel personnage porte un chapeau magique dans Fantasia ?', 'Choix multiple', 'Difficulté: Moyenne'),
-    (4, 2, 'Quel acteur joue le rôle de John Wick ?', 'Choix multiple', 'Difficulté: Moyenne'),
-    (5, 2, 'Quel acteur joue le rôle de John McClane dans Die Hard ?', 'Choix multiple', 'Difficulté: Moyenne'),
-    (6, 2, 'Quel acteur joue le rôle de John Rambo dans Rambo ?', 'Choix multiple', 'Difficulté: Moyenne'),
-    (7, 3, 'Quel est le nom du personnage principal dans The Legend of Zelda ?', 'Choix multiple', 'Difficulté: Difficile'),
-    (8, 3, 'Quel est le nom du personnage principal dans Final Fantasy ?', 'Choix multiple', 'Difficulté: Difficile'),
-    (9, 3, 'Quel est le nom du personnage principal dans Metal Gear Solid ?', 'Choix multiple', 'Difficulté: Difficile');
+    (1, 1, "Qui est l\'éternel ennemi de Tom dans Tom et Jerry ?", 'Choix multiple',1 ,'Difficulté: Facile'),
+    (2, 1, 'Quel personnage vit dans un ananas sous la mer ?', 'Choix multiple',1 ,'Difficulté: Facile'),
+    (3, 1, 'Quel personnage porte un chapeau magique dans Fantasia ?', 'Choix multiple',1 ,'Difficulté: Moyenne'),
+    (4, 2, 'Quel acteur joue le rôle de John Wick ?', 'Choix multiple',1 ,'Difficulté: Moyenne'),
+    (5, 2, 'Quel acteur joue le rôle de John McClane dans Die Hard ?', 'Choix multiple',1 ,'Difficulté: Moyenne'),
+    (6, 2, 'Quel acteur joue le rôle de John Rambo dans Rambo ?', 'Choix multiple',1 ,'Difficulté: Moyenne'),
+    (7, 3, 'Quel est le nom du personnage principal dans The Legend of Zelda ?', 'Choix multiple',1 ,'Difficulté: Difficile'),
+    (8, 3, 'Quel est le nom du personnage principal dans Final Fantasy ?', 'Choix multiple',1 ,'Difficulté: Difficile'),
+    (9, 3, 'Quel est le nom du personnage principal dans Metal Gear Solid ?', 'Choix multiple',1 ,'Difficulté: Difficile');
     
 -- Ajout de réponses pour les QUESTIONS
 

@@ -3,7 +3,7 @@
 require 'BD/php/quizz.php';
 
 
-$lesQuizz = get_all_quiz();
+$lesQuizz = Quiz::get_all_quiz();
 
 
 

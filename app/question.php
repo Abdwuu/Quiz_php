@@ -2,7 +2,7 @@
 
 require 'BD/php/quizz.php';
 
-$lequiz = get_Quiz(intval($_POST['quiz']));
+$lequiz = Quiz::get_Quiz(intval($_POST['quiz']));
 
 
 ?>
@@ -29,14 +29,9 @@ $lequiz = get_Quiz(intval($_POST['quiz']));
 
         <?php
 
-        foreach ($_POST as $key => $value) {
-            echo $key . ' : ' . $value . '<br>';
-
-        }
-
         $les_questions = $lequiz->getLesQuestions();
         foreach ($les_questions as $question) {
-            $question->render();
+            echo $question->render();
         }
 
         ?>

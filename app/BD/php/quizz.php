@@ -2,7 +2,8 @@
 
 
 require_once('connexion.php');
-require ('IRender.php');
+require ('Question.php');
+require_once ('IRender.php');
 
 $connexion=connect_bd();
 
@@ -59,25 +60,41 @@ class Quiz implements IRender{
         $lesQuestions = [];
 
         foreach ($resultat as $value) {
-            $lesQuestions[] = new Question($value['idQuestion'],$value['idQuiz'],$value['enonce'],$value['typequestion'],$value['lespts'],$value['autre']);
+            $lesQuestions[] = new Question($value['QuestionID'],$value['QuizID'],$value['Enonce'],$value['TypeQuestion'],$value['lesPoints'],$value['AutresProprietes']);
         }
 
         $this->lesQuestions = $lesQuestions;
 
     }
 
-    public static function get_Quiz(int $idQuiz){
+    public static function get_all_quiz(){
+        global $connexion;
+        $requete="select * from QUIZZES;";
+        $resultat=$connexion->query($requete);
+        $lesquiz = [];
+        foreach ($resultat as $value) {
+            $lesquiz[] = new Quiz(intval($value['QuizID']),$value['Titre'],$value['Description'],intval($value['TempsLimite']),$value['AutresProprietes']);
+        }
+    
+    
+        return $lesquiz;
+    }
+
+    public static function get_Quiz(int $idQuiz) : Quiz{
         $bd = connect_bd();
         $requete = "select * from QUIZZES where QuizID = '$idQuiz';";
+    
         $resultat = $bd->query($requete);
         foreach ($resultat as $value) {
-            $quiz[] = new Quiz(intval($value['QuizID']),$value['Titre'],$value['Description'],intval($value['TempsLimite']),$value['AutresProprietes']);
+            $quiz = new Quiz(intval($value['QuizID']),$value['Titre'],$value['Description'],intval($value['TempsLimite']),$value['AutresProprietes']);
             return $quiz;
         }
-
-        return null;
+    
+        return new Quiz(-1,"Quiz non trouvée","",0,"");
         
     }
+    
+
 
     public function render(): string{
         return "<option value='$this->idQuiz'>$this->titre</option>";
@@ -88,30 +105,6 @@ class Quiz implements IRender{
 }
 
 
-function get_all_quiz(){
-    global $connexion;
-    $requete="select * from QUIZZES;";
-    $resultat=$connexion->query($requete);
-    $lesquiz = [];
-    foreach ($resultat as $value) {
-        $lesquiz[] = new Quiz(intval($value['QuizID']),$value['Titre'],$value['Description'],intval($value['TempsLimite']),$value['AutresProprietes']);
-    }
 
 
-    return $lesquiz;
-}
 
-
-function get_Quiz(int $idQuiz) : Quiz{
-    $bd = connect_bd();
-    $requete = "select * from QUIZZES where QuizID = '$idQuiz';";
-
-    $resultat = $bd->query($requete);
-    foreach ($resultat as $value) {
-        $quiz = new Quiz(intval($value['QuizID']),$value['Titre'],$value['Description'],intval($value['TempsLimite']),$value['AutresProprietes']);
-        return $quiz;
-    }
-
-    return new Quiz(-1,"Quiz non trouvée","",0,"");
-    
-}
