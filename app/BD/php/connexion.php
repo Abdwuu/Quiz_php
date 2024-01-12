@@ -13,4 +13,5 @@ function connect_bd(){
 	return $connexion;
 }
 
+
 ?>

@@ -1,6 +1,10 @@
 <?php
 
 require 'BD/php/quizz.php';
+
+$lequiz = get_Quiz(intval($_POST['quiz']));
+
+
 ?>
 
 <!DOCTYPE html>
@@ -9,13 +13,15 @@ require 'BD/php/quizz.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"  href="/CSS/accueil.css">
-    <title>Quizz sur les Dessins Animés</title>
+    <?php
+    echo "<title>Quizz : {$lequiz->getTitre()}</title>";
+    ?>
 
 </head>
 <body>
 
 <div class="container">
-    <h1>Quizz sur les Dessins Animés</h1>
+    <h1>Quizz : <?php echo $lequiz->getTitre() ?></h1>
 
     <form action="process_quiz.php" method="get">
 
@@ -28,9 +34,9 @@ require 'BD/php/quizz.php';
 
         }
 
-        $les_questions = get_question_quizz($_POST['quiz']);
+        $les_questions = $lequiz->getLesQuestions();
         foreach ($les_questions as $question) {
-
+            $question->render();
         }
 
         ?>

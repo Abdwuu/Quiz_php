@@ -11,17 +11,18 @@ CREATE TABLE QUIZZES (
 
 -- Table QUESTIONS
 CREATE TABLE QUESTIONS (
-    QuestionID INT PRIMARY KEY,
+    QuestionID INT AUTO_INCREMENT PRIMARY KEY,
     QuizID INT,
     Enonce TEXT,
     TypeQuestion VARCHAR(50), -- Choix multiple, vrai/faux, texte, etc.
+    lesPoints INT,
     AutresProprietes VARCHAR(255),
     FOREIGN KEY (QuizID) REFERENCES QUIZZES(QuizID)
 );
 
 -- Table Réponses
 CREATE TABLE REPONSES (
-    ReponseID INT PRIMARY KEY,
+    ReponseID INT AUTO_INCREMENT PRIMARY KEY,
     QuestionID INT,
     TexteReponse TEXT,
     EstCorrecte BOOLEAN,

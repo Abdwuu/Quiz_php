@@ -1,22 +1,12 @@
 <?php
 
 require 'BD/php/quizz.php';
-require 'Input/Form.php';
-require 'Input/Select.php';
-require 'Input/Option.php';
-$questions = get_titre_quizz();
-
-$list_questions = [];
-foreach ($questions as $question) {
-    $list_questions[] = new Option($question);
-}
-
-$select = new Select('question', 'Choisissez une question', $list_questions);
 
 
-// creation du formulaire
-$form = new Form(array(),'get', 'question.php?');
-$form->addSelect($select);
+$lesQuizz = get_all_quiz();
+
+
+
 
 ?>
 
@@ -44,7 +34,7 @@ $form->addSelect($select);
             <!-- Ajoutez d'autres options pour différents quizz -->
             <?php
             
-            foreach ($list_questions as $question) {
+            foreach ( $lesQuizz as $question) {
                 echo $question->render();
             }
 
