@@ -28,6 +28,7 @@ $lesQuizz = Quiz::get_all_quiz();
     <h1>Choisissez un Quizz</h1>
 
     <form action="question.php" method="post">
+        <input type="text" name="nom" id="nom" placeholder="Veuillez entrer votre nom" required>
         <label for="quiz">Sélectionnez un quizz :</label>
         <select id="quiz" name="quiz">
             <option value="quiz1">Choisissez une propositions</option>

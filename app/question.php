@@ -23,7 +23,7 @@ $lequiz = Quiz::get_Quiz(intval($_POST['quiz']));
 <div class="container">
     <h1>Quizz : <?php echo $lequiz->getTitre() ?></h1>
 
-    <form action="process_quiz.php" method="get">
+    <form action="Resultat.php" method="POST">
 
 
 
