@@ -38,7 +38,7 @@ select {
     box-sizing: border-box;
 }
 
-button {
+button, .retour {
     background-color: #007BFF;
     color: #fff;
     border: none;
@@ -51,4 +51,10 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+form {display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
 }

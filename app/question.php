@@ -34,9 +34,16 @@ $lequiz = Quiz::get_Quiz(intval($_POST['quiz']));
             echo $question->render();
         }
 
+        // si le quiz n'est pas trouver on affiche un message d'erreur
+        if($lequiz->getIdQuiz() == -1){
+            echo "<a class='retour' href='Acceuil.php'>Retour</a>";
+        }else{
+            echo "<button type='submit'>Valider</button>";
+        }
+
         ?>
 
-        <button type="submit">Soumettre</button>
+        
     </form>
 </div>
 
