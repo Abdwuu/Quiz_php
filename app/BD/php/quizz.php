@@ -94,7 +94,23 @@ class Quiz implements IRender{
         
     }
     
+    public function createQuiz(){
+        $bd = connect_bd();
+        $requete = "insert into QUIZZES (Titre,Description,TempsLimite,AutresProprietes) values ('$this->titre','$this->description','$this->tempslimite','$this->autre');";
+        $bd->exec($requete);
+    }
 
+    public function updateQuiz(){
+        $bd = connect_bd();
+        $requete = "update QUIZZES set Titre = '$this->titre', Description = '$this->description', TempsLimite = '$this->tempslimite', AutresProprietes = '$this->autre' where QuizID = '$this->idQuiz';";
+        $bd->exec($requete);
+    }
+
+    public function addQuestion(Question $question){
+        $bd = connect_bd();
+        $requete = "insert into QUESTIONS (QuizID,Enonce,TypeQuestion,lesPoints,AutresProprietes) values ('$this->idQuiz',$question->getEnonce()','$question->getTypeQuestion()','$question->getLesPoints()','$question->getAutresProprietes()');";
+        $bd->exec($requete);
+    }
 
     public function render(): string{
         return "<option value='$this->idQuiz'>$this->titre</option>";

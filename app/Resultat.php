@@ -31,19 +31,21 @@ echo "<h1>Vous avez gagné $points_gagner points</h1>";
     function getEmoji($points, $nbre_question) {
 
         $les_emojie = array("😭", "😕", "😐", "🙂", "😀", "😍");
+        $pourcentageReussite = ($points / $nbre_question) * 100;
 
-        if ($points == $nbre_question) {
-            return $les_emojie[5];
-        } else if ($points >= $nbre_question / 2) {
-            return $les_emojie[4];
-        } else if ($points >= $nbre_question / 4) {
-            return $les_emojie[3];
-        } else if ($points >= $nbre_question / 8) {
-            return $les_emojie[2];
-        } else if ($points >= $nbre_question / 16) {
-            return $les_emojie[1];
-        } else {
+
+        if ($pourcentageReussite < 20) {
             return $les_emojie[0];
+        } else if ($pourcentageReussite < 40) {
+            return $les_emojie[1];
+        } else if ($pourcentageReussite < 60) {
+            return $les_emojie[2];
+        } else if ($pourcentageReussite < 80) {
+            return $les_emojie[3];
+        } else if ($pourcentageReussite < 97) {
+            return $les_emojie[4];
+        } else {
+            return $les_emojie[5];
         }
     
     }

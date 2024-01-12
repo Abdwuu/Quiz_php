@@ -63,3 +63,25 @@ flex-direction: column;}
 .retour{
     display: inline;
 }
+
+
+
+.titre {
+    color: #007BFF;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.unbutton {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
