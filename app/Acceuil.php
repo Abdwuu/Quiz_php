@@ -49,7 +49,7 @@ $lesQuizz = Quiz::get_all_quiz();
 
 
 </div>
-<div class="button-container">
+<div class="button-container container">
         <a href="creer_quiz.php" class="button">Créer un Quiz</a>
         <a href="modifier_quiz.php" class="button">Modifier un Quiz</a>
     </div>

@@ -93,6 +93,12 @@ class Quiz implements IRender{
         return new Quiz(-1,"Quiz non trouvée","",0,"");
         
     }
+
+    public function addBestScore(string $nom,int $score){
+        $bd = connect_bd();
+        $requete = "insert into BESTSCORES (QuizID,Nom,Score) values ('$this->idQuiz','$nom','$score');";
+        $bd->exec($requete);
+    }
     
     public function createQuiz(){
         $bd = connect_bd();

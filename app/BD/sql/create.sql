@@ -1,4 +1,10 @@
 
+CREATE TABLE USER(
+    Nom VARCHAR(50) PRIMARY KEY,
+    Prenom VARCHAR(50),
+    MotDePasse VARCHAR(50),
+    AutresProprietes VARCHAR(255)
+);
 
 -- Table QUIZZES
 CREATE TABLE QUIZZES (
@@ -20,6 +26,17 @@ CREATE TABLE QUESTIONS (
     FOREIGN KEY (QuizID) REFERENCES QUIZZES(QuizID)
 );
 
+CREATE TABLE BESTNOTE (
+    QuizID INT,
+    UserID INT,
+    Score INT,
+    PRIMARY KEY (QuizID, UserID),
+    FOREIGN KEY (QuizID) REFERENCES QUIZZES(QuizID),
+    FOREIGN KEY (UserID) REFERENCES USER(UserID)
+);
+
+
+
 -- Table Réponses
 CREATE TABLE REPONSES (
     ReponseID INT AUTO_INCREMENT PRIMARY KEY,
@@ -29,6 +46,8 @@ CREATE TABLE REPONSES (
     AutresProprietes VARCHAR(255),
     FOREIGN KEY (QuestionID) REFERENCES QUESTIONS(QuestionID)
 );
+
+
 
 -- -- Table Résultats
 -- CREATE TABLE Resultats (

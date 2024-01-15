@@ -58,7 +58,9 @@ display: flex;
 /* justify-content: space-between; */
 align-items: center;
 gap: 19px;
-flex-direction: column;}
+padding-left: 24px;
+flex-direction: column;
+}
 
 .retour{
     display: inline;

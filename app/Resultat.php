@@ -4,8 +4,7 @@ $points_gagner = 0;
 $nbre_question = 0;
 
 foreach ($_POST as $key => $value) {
-    $nbre_question++;
-    $points_gagner += intval($value);
+    echo $key . " => " . $value . "<br>";
 }
 
 echo "<h1>Vous avez gagné $points_gagner points</h1>";

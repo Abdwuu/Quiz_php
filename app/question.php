@@ -26,6 +26,7 @@ $lequiz = Quiz::get_Quiz(intval($_POST['quiz']));
     <form action="Resultat.php" method="POST">
 
 
+    <input type="hidden" name="quiz" value="<?php echo $lequiz->getIdQuiz(); ?>">
 
         <?php
 
@@ -33,7 +34,7 @@ $lequiz = Quiz::get_Quiz(intval($_POST['quiz']));
         foreach ($les_questions as $question) {
             echo $question->render();
         }
-
+        
         // si le quiz n'est pas trouver on affiche un message d'erreur
         if($lequiz->getIdQuiz() == -1){
             echo "<a class='retour' href='Acceuil.php'>Retour</a>";
@@ -43,7 +44,6 @@ $lequiz = Quiz::get_Quiz(intval($_POST['quiz']));
 
         ?>
 
-        
     </form>
 </div>
 
