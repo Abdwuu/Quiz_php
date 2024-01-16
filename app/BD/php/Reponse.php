@@ -35,7 +35,7 @@ class Reponse implements IRender{
     }
 
     public function render(): string{
-        return "<label><input type='radio' name='$this->idQuestion' value='$this->valide' required>$this->TexteReponse</label>";
+        return "<label><input type='radio' name=question'$this->idQuestion' value='$this->valide' required>$this->TexteReponse</label>";
     }
 
 }

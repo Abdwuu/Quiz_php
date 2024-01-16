@@ -2,12 +2,28 @@
 
 $points_gagner = 0;
 $nbre_question = 0;
+$dico = array();
 
 foreach ($_POST as $key => $value) {
-    echo $key . " => " . $value . "<br>";
+    // si key comment par question alors c'est une question
+    if (substr($key, 0, 8) == "question") {
+        $nbre_question++;
+        // on recupere la valeur de la question
+        $points_gagner += intval($value);
+        $dico[$key] = $value;
+    }
 }
 
 echo "<h1>Vous avez gagné $points_gagner points</h1>";
+
+$meilleur_score = Quiz::getBestScores($_POST['quiz']);
+
+if ($meilleur_score == 0){
+    echo "<h1>Vous avez le meilleur score</h1>";
+}
+
+
+
 ?>
 
 
@@ -50,8 +66,9 @@ echo "<h1>Vous avez gagné $points_gagner points</h1>";
     }
 
     // Affichage des points et de l'emoji
-    echo "<div class='points'>Points: <span style='color: #dc3545;'>$points_gagner</span></div>";
+    echo "<div class='points'>Points : <span style='color: #dc3545;'>$points_gagner</span></div>";
     echo "<div class='emoji'>" . getEmoji($points_gagner,$nbre_question) . "</div>";
+    echo "<div class='meilleur_score'>Meilleur score : <span style='color: #dc3545;'>$meilleur_score</span></div>";
     ?>
 
 </div>

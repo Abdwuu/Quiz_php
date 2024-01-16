@@ -10,7 +10,7 @@ class InputSubmit extends Input
 
     public function render(): string
     {
-        return "<input type='submit' name='$this->name' id='$this->id' placeholder='$this->placeholder' value='$this->value'>";
+        return "<input type='submit' name='$this->name' id='$this->id' placeholder='$this->placeholder' >";
     }
 }
 

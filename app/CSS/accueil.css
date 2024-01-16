@@ -87,3 +87,10 @@ flex-direction: column;
     border-radius: 5px;
     cursor: pointer;
 }
+
+span {
+    color: #007BFF;
+    font-weight: bold;
+    /* le texte sera en majuscule */
+    text-transform: uppercase;
+}

@@ -50,3 +50,15 @@ VALUES
     (26, 9, 'Solid Snake', TRUE, 'Autre option'),
     (27, 9, 'Liquid Snake', FALSE, 'Autre option'),
     (28, 9, 'Big Boss', FALSE, 'Autre option');
+
+INSERT INTO USER (UserID, Nom, Prenom, MotDePasse, AutresProprietes)
+VALUES
+    (1, 'free', 'free', 'free', 'free'),
+    (2, 'Doe', 'Jane', '123456', 'Autre option'),
+    (3, 'Doe', 'Jack', '123456', 'Autre option');
+
+INSERT INTO BESTNOTE (idBestNote, QuizID, UserID, Score)
+VALUES
+    (1, 1, 1, 0),
+    (2, 1, 2, 0),
+    (3, 1, 3, 0);  

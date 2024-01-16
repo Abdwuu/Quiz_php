@@ -7,12 +7,13 @@ class Form implements IRender
     protected string $method;
     protected string $action;
 
-    public function __construct(array $inputs, string $method = 'get', string $action = '')
+    public function __construct(string $method, string $action )
     {
-        $this->inputs = $inputs;
+        $this->inputs = [];
         $this->method = $method;
         $this->action = $action;
     }
+
 
 
     /**
@@ -41,7 +42,7 @@ class Form implements IRender
 
     public function render(): string
     {
-        $html = "<form class='form-horizontal' role='form' method='get'>".PHP_EOL;
+        $html = "<form class='form-horizontal' role='form' method='$this->method' action='$this->action'>".PHP_EOL;
         foreach ($this->inputs as $input) {
             $html .= "<div class='col-sm-10'>".PHP_EOL;
             $html .= $input->render();

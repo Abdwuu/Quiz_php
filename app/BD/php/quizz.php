@@ -94,10 +94,27 @@ class Quiz implements IRender{
         
     }
 
+    public static function getBestScores(int $idQuiz){
+        $bd = connect_bd();
+        $requete = "select * from BESTSCORES where QuizID = '$idQuiz' order by Score desc;";
+        $resultat = $bd->query($requete);
+        $lesScores = [];
+        foreach ($resultat as $value) {
+            $lesScores[$resultat] = $value;
+        }
+        if (count($lesScores) == 0){
+            return 0;
+        }
+        return $lesScores;
+    }
+
     public function addBestScore(string $nom,int $score){
         $bd = connect_bd();
-        $requete = "insert into BESTSCORES (QuizID,Nom,Score) values ('$this->idQuiz','$nom','$score');";
-        $bd->exec($requete);
+        $existe = false;
+        $requete = "select * from BESTSCORES where QuizID = '$this->idQuiz' order by Score desc;";
+        $resultat = $bd->query($requete);
+        $lesScores = [];
+        
     }
     
     public function createQuiz(){
