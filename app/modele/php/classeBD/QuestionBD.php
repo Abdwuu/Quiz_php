@@ -1,6 +1,6 @@
 <?php
 
-require_once '../classe/Question.php';
+require_once 'classe/Question.php';
 
 
 class QuestionBD{

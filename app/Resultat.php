@@ -32,7 +32,7 @@ if ($meilleur_score == 0){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link  rel="stylesheet" href="/CSS/page_reponse.css">
+    <link  rel="stylesheet" href="vue/CSS/page_reponse.css">
     <title>Résultats des Points</title>
 </head>
 <body>

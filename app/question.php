@@ -1,8 +1,8 @@
 <?php
 
-require 'BD/php/quizz.php';
+require 'index.php';
 
-$lequiz = Quiz::get_Quiz(intval($_POST['quiz']));
+$lequiz = $QuizBD->get_quiz($_GET['idQuiz']);
 
 
 ?>
@@ -12,7 +12,7 @@ $lequiz = Quiz::get_Quiz(intval($_POST['quiz']));
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"  href="/CSS/accueil.css">
+    <link rel="stylesheet"  href="vue/CSS/accueil.css">
     <?php
     echo "<title>Quizz : {$lequiz->getTitre()}</title>";
     ?>

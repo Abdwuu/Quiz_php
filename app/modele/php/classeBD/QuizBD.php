@@ -1,7 +1,7 @@
 <?php
 
-require_once '../classe/Quiz.php';
-
+require_once 'classe/Quiz.php';
+require_once 'QuestionBD.php';
 class QuizBD{
 
     private $bd;
@@ -22,6 +22,19 @@ class QuizBD{
         return $lesquiz;
     }
 
+    public function get_quiz(int $idQuiz){
+        $requete="select * from QUIZZES where QuizID = '$idQuiz';";
+        $resultat=$this->bd->query($requete);
+        $lesquiz = [];
+        foreach ($resultat as $value) {
+            $lequiz = new Quiz(intval($value['QuizID']),$value['Titre'],$value['Description'],intval($value['TempsLimite']),$value['AutresProprietes']);
+            $lequiz->setLesQuestions($this->get_question($idQuiz));
+            $lesquiz[] = 
+        }
+    
+    
+        return $lesquiz;
+    }
 
     public function getBestScores(int $idQuiz){
         $requete = "select * from BESTSCORES where QuizID = '$idQuiz' order by Score desc;";

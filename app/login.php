@@ -1,9 +1,9 @@
 <?php
 
-require_once 'Input/Form.php';
-require_once 'Input/InputText.php';
-require_once 'Input/InputPassword.php';
-require_once 'Input/InputSubmit.php';
+require_once 'vue/Input/Form.php';
+require_once 'vue/Input/InputText.php';
+require_once 'vue/Input/InputPassword.php';
+require_once 'vue/Input/InputSubmit.php';
 
 
 
