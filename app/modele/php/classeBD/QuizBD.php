@@ -62,5 +62,10 @@ class QuizBD{
         return $id;
     }
 
+    public function ajouter_quiz(string $titre, string $description, int $tempsLimite, string $autresProprietes){
+        $requete = "insert into QUIZZES (Titre, Description, TempsLimite, AutresProprietes) values ('$titre', '$description', '$tempsLimite', '$autresProprietes');";
+        $resultat = $this->bd->query($requete);
+    }
+
 }
 

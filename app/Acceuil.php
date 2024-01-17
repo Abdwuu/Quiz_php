@@ -28,7 +28,6 @@ $lesQuizz = $QUIZBD->get_all_quiz();
         <label for="quiz">Sélectionnez un quizz :</label>
         <select id="quiz" name="quiz">
             <option value="quiz1">Choisissez une proposition</option>
-            <!-- Ajoutez d'autres options pour différents quizz -->
             <?php
             foreach ($lesQuizz as $question) {
                 echo $question->render();

@@ -37,9 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 function validateUser($username, $password) {
-    // Vous devez implémenter la logique de validation des informations d'identification ici
-    // Vérification dans la base de données, par exemple
-    // Remplacez par la logique réelle de validation des informations d'identification
     return $username === 'free' && $password === 'free';
 }
 
