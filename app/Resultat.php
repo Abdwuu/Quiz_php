@@ -78,6 +78,7 @@ if ($meilleur_score == $points_gagner){
     echo "<div class='points'>Points : <span style='color: #dc3545;'>$points_gagner</span></div>";
     echo "<div class='emoji'>" . getEmoji($points_gagner,$nbre_question) . "</div>";
     echo "<div class='meilleur_score'>Meilleur score : <span style='color: #dc3545;'>$meilleur_score</span></div>";
+    echo "<a class='retour' href='Acceuil.php'>Retour</a>";
     ?>
 
 </div>

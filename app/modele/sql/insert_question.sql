@@ -10,6 +10,7 @@ VALUES
     (1, 'Quiz sur les Dessins Animés', 'Testez vos connaissances sur les dessins animés', 300, 'Difficulté: Facile'),
     (2, "Quiz sur les films d'action", "Testez vos connaissances sur les films d'action", 300, 'Difficulté: Moyenne'),
     (3, "Quiz sur les jeux vidéo", "Testez vos connaissances sur les jeux vidéo", 300, 'Difficulté: Difficile');
+    
 
 -- Ajout de QUESTIONS pour le quiz sur les dessins animés
 INSERT INTO QUESTIONS (QuestionID, QuizID, Enonce, TypeQuestion,lesPoints, AutresProprietes)
