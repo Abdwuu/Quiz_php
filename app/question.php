@@ -1,6 +1,6 @@
 <?php
 
-require 'index.php';
+require_once 'const.php';
 
 
 $lequiz = $QUIZBD->get_quiz($_POST['quiz']);

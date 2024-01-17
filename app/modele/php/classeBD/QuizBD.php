@@ -36,22 +36,30 @@ class QuizBD{
     }
 
     public function getBestScores(int $idQuiz){
-        $requete = "select * from BESTSCORES where QuizID = '$idQuiz' order by Score desc;";
+        $requete = "select * from BESTNOTE where QuizID = '$idQuiz';";
         $resultat = $this->bd->query($requete);
-        $lesScores = [];
         foreach ($resultat as $value) {
-            $lesScores[$resultat] = $value;
+            return intval($value['Score']);
         }
-        if (count($lesScores) == 0){
-            return 0;
-        }
-        return $lesScores;
+        return 0;
     }
 
     public function addBestScore(int $idQuiz, int $score, string $nom){
-        $requete = "update BESTSCORES SET Score = '$score', Nom = '$nom' WHERE QuizID = '$idQuiz' and Score < '$score';";
+        $id = $this->get_id_User($nom);
+
+        $requete = "update BESTNOTE SET Score = '$score', UserID = '$id' where QuizID = '$idQuiz';";
         $resultat = $this->bd->query($requete);
         
+    }
+
+    private function get_id_User(string $nom){
+        $requete = "select * from USER where Nom = '$nom';";
+        $resultat = $this->bd->query($requete);
+        $id = -1;
+        foreach ($resultat as $value) {
+            $id = intval($value['UserID']);
+        }
+        return $id;
     }
 
 }

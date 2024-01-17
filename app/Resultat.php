@@ -1,6 +1,6 @@
 <?php
 
-require_once 'index.php';
+require_once 'const.php';
 
 session_start();
 
@@ -18,13 +18,16 @@ foreach ($_POST as $key => $value) {
     }
 }
 
-$QUIZBD->addBestScore($_POST['quiz'], $points_gagner, $_SESSION['user_id']);
+$meilleur_score = QUIZBD->getBestScores($_POST['quiz']);
+if ($points_gagner > $meilleur_score){
+     QUIZBD->addBestScore($_POST['quiz'], $points_gagner, $_SESSION['user_id']);
+}
+
 
 echo "<h1>Vous avez gagné $points_gagner points</h1>";
 
-$meilleur_score = $QUIZBD->getBestScores($_POST['quiz']);
 
-if ($meilleur_score == 0){
+if ($meilleur_score == $points_gagner){
     echo "<h1>Vous avez le meilleur score</h1>";
 }
 

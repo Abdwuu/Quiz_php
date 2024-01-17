@@ -13,8 +13,7 @@ CREATE TABLE QUIZZES (
     Titre VARCHAR(255),
     Description TEXT,
     TempsLimite INT, -- Temps limite en secondes (si applicable)
-    AutresProprietes VARCHAR(255),
-    CALL createBestScore(QuizID)
+    AutresProprietes VARCHAR(255)
 );
 
 -- Table QUESTIONS
@@ -30,13 +29,15 @@ CREATE TABLE QUESTIONS (
 
 CREATE TABLE BESTNOTE (
     idBestNote INT AUTO_INCREMENT PRIMARY KEY,
-    QuizID INT UNSIGNED,
-    UserID INT UNSIGNED,
-    Score INT,
-    FOREIGN KEY (QuizID) REFERENCES QUIZZES(QuizID),
-    FOREIGN KEY (UserID) REFERENCES USER(UserID)
+    QuizID INT ,
+    UserID INT ,
+    Score INT
 );
 
+-- RAJOUTER LES FOREIGNKEY
+
+ALTER TABLE BESTNOTE ADD FOREIGN KEY (QuizID) REFERENCES QUIZZES(QuizID);
+ALTER TABLE BESTNOTE ADD FOREIGN KEY (UserID) REFERENCES USER(UserID);
 
 
 
@@ -52,19 +53,26 @@ CREATE TABLE REPONSES (
 
 
 -- Nous allons crée une procédure permettant à lorsque une nouveau quizz est créé, le bestscore est automatiquement créé à 0
+delimiter |
 CREATE PROCEDURE `createBestScore`(IN quizID INT)
 BEGIN
-    INSERT INTO BESTNOTE (QuizID, UserID, Score) VALUES (quizID, 0, 0);
-END
+    INSERT INTO BESTNOTE (QuizID, UserID, Score) VALUES (quizID, 1, 0);
+END |
+delimiter ;
 
--- -- Table Résultats
--- CREATE TABLE Resultats (
---     ResultatID INT PRIMARY KEY,
---     UserID INT,
---     QuizID INT,
---     Score INT,
---     DateHeureCompletion DATETIME,
---     AutresProprietes VARCHAR(255),
---     FOREIGN KEY (UserID) REFERENCES Utilisateurs(UserID),
---     FOREIGN KEY (QuizID) REFERENCES QUIZZES(QuizID)
--- );
+-- Supprimez le trigger s'il existe
+DROP TRIGGER IF EXISTS before_insert_quizzes;
+
+-- Créez le trigger
+delimiter |
+CREATE TRIGGER before_insert_quizzes
+AFTER INSERT ON QUIZZES
+FOR EACH ROW
+BEGIN
+    -- Appeler la procédure stockée pour créer le best score
+    CALL createBestScore(NEW.QuizID);
+END;
+|
+delimiter ;
+
+
