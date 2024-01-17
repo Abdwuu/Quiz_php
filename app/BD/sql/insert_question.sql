@@ -1,5 +1,5 @@
 -- Ajout d'un quiz sur les dessins animés
-INSERT INTO QUIZZES (QuizID, Titre, Description, TempsLimite, AutresProprietes)
+INSERT INTO QUIZZES (QuizID, Titre, DescriptionQ, TempsLimite, AutresProprietes)
 VALUES 
     (1, 'Quiz sur les Dessins Animés', 'Testez vos connaissances sur les dessins animés', 300, 'Difficulté: Facile'),
     (2, "Quiz sur les films d'action", "Testez vos connaissances sur les films d'action", 300, 'Difficulté: Moyenne'),

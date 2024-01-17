@@ -11,7 +11,7 @@ CREATE TABLE USER(
 CREATE TABLE QUIZZES (
     QuizID INT AUTO_INCREMENT PRIMARY KEY,
     Titre VARCHAR(255),
-    Description TEXT,
+    DescriptionQ TEXT,
     TempsLimite INT, -- Temps limite en secondes (si applicable)
     AutresProprietes VARCHAR(255)
 );
