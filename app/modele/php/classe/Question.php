@@ -1,7 +1,6 @@
 <?php
 
-require_once ('connexion.php');
-require_once ('Reponse.php');
+
 require_once ('IRender.php');
 
 class Question implements IRender{

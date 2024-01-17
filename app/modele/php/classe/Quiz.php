@@ -1,8 +1,7 @@
 <?php
 
 
-require_once('connexion.php');
-require ('Question.php');
+
 require_once ('IRender.php');
 
 

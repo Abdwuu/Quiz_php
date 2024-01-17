@@ -1,8 +1,9 @@
 <?php
-session_start(); // N'oubliez pas de démarrer la session
-require 'BD/php/quizz.php';
 
-$lesQuizz = Quiz::get_all_quiz();
+require_once 'index.php';
+
+$lesQuizz = $QUIZBD->get_all_quiz();
+
 ?>
 
 <!DOCTYPE html>
