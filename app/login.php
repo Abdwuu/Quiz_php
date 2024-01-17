@@ -12,7 +12,7 @@ session_start(); // Démarrer la session
 
 if(isset($_SESSION['user_id'])) {
     // Rediriger si l'utilisateur est déjà connecté
-    header("Location: accueil.php");
+    header("Location: Accueil.php");
     exit();
 }
 
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user_id'] = $username; // Remplacez par l'ID réel de l'utilisateur
 
         // Rediriger vers la page d'accueil
-        header("Location: Acceuil.php");
+        header("Location: Accueil.php");
         exit();
     } else {
         $errorMessage = "Identifiants incorrects";
