@@ -53,7 +53,7 @@ VALUES
 
 INSERT INTO USER (UserID, Nom, Prenom, MotDePasse, AutresProprietes)
 VALUES
-    (1, 'free', 'free', 'free', 'free'),
+    (0, 'free', 'free', 'free', 'free'),
     (2, 'Doe', 'Jane', '123456', 'Autre option'),
     (3, 'Doe', 'Jack', '123456', 'Autre option');
 

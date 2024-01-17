@@ -1,6 +1,7 @@
 <?php
 
 require_once 'classe/Question.php';
+require_once 'ReponseBD.php';
 
 
 class QuestionBD{
@@ -19,10 +20,12 @@ class QuestionBD{
         $lesQuestion = [];
 
         foreach ($resultat as $value) {
-            $lesQuestions[] = new Question($value['QuestionID'],$value['QuizID'],$value['Enonce'],$value['TypeQuestion'],$value['lesPoints'],$value['AutresProprietes']);
+            $uneQuestion = new Question($value['QuestionID'],$value['QuizID'],$value['Enonce'],$value['TypeQuestion'],$value['lesPoints'],$value['AutresProprietes']);
+            $uneQuestion->setLesReponses((new ReponseBD($this->bd))->get_reponse($value['QuestionID']));
+            $lesQuestion[] = $uneQuestion;
         }
 
-        return $lesQuestions;
+        return $lesQuestion;
     } 
 
     

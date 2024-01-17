@@ -1,5 +1,9 @@
 <?php
 
+require_once 'index.php';
+
+session_start();
+
 $points_gagner = 0;
 $nbre_question = 0;
 $dico = array();
@@ -14,9 +18,11 @@ foreach ($_POST as $key => $value) {
     }
 }
 
+$QUIZBD->addBestScore($_POST['quiz'], $points_gagner, $_SESSION['user_id']);
+
 echo "<h1>Vous avez gagné $points_gagner points</h1>";
 
-$meilleur_score = Quiz::getBestScores($_POST['quiz']);
+$meilleur_score = $QUIZBD->getBestScores($_POST['quiz']);
 
 if ($meilleur_score == 0){
     echo "<h1>Vous avez le meilleur score</h1>";

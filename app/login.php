@@ -6,13 +6,12 @@ require_once 'vue/Input/InputPassword.php';
 require_once 'vue/Input/InputSubmit.php';
 
 
+session_start();
 
-
-session_start(); // Démarrer la session
 
 if(isset($_SESSION['user_id'])) {
     // Rediriger si l'utilisateur est déjà connecté
-    header("Location: accueil.php");
+    header("Location: Acceuil.php");
     exit();
 }
 
@@ -56,6 +55,7 @@ $form->addInput(new InputSubmit('submit','submit' ,'Se connecter', 'Se connecter
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="vue/CSS/connexion.css">
     <title>Connexion</title>
 </head>
 <body>

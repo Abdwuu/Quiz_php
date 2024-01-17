@@ -53,6 +53,10 @@ class Question implements IRender{
         return $this->lesReponses;
     }
 
+    public function setLesReponses(array $lesReponses){
+        $this->lesReponses = $lesReponses;
+    }
+
     public function setEnonce($enonce){
         $this->enonce = $enonce;
     }

@@ -13,7 +13,8 @@ CREATE TABLE QUIZZES (
     Titre VARCHAR(255),
     Description TEXT,
     TempsLimite INT, -- Temps limite en secondes (si applicable)
-    AutresProprietes VARCHAR(255)
+    AutresProprietes VARCHAR(255),
+    CALL createBestScore(QuizID)
 );
 
 -- Table QUESTIONS
@@ -50,6 +51,11 @@ CREATE TABLE REPONSES (
 );
 
 
+-- Nous allons crée une procédure permettant à lorsque une nouveau quizz est créé, le bestscore est automatiquement créé à 0
+CREATE PROCEDURE `createBestScore`(IN quizID INT)
+BEGIN
+    INSERT INTO BESTNOTE (QuizID, UserID, Score) VALUES (quizID, 0, 0);
+END
 
 -- -- Table Résultats
 -- CREATE TABLE Resultats (

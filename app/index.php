@@ -11,7 +11,8 @@ $QUIZBD = new QuizBD($BD);
 
 $QUESTIONBD = new QuestionBD($BD);
 
-session_start(); // N'oubliez pas de démarrer la session
+
+// define('QUIZBD', $QUIZBD);
+// define('QUESTIONBD', $QUESTIONBD);
 
 
-?>

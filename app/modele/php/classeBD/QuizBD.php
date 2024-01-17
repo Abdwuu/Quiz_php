@@ -21,20 +21,18 @@ class QuizBD{
     
         return $lesquiz;
     }
-
-    public function get_quiz(int $idQuiz){
+ 
+    public function get_quiz($idQuiz) : Quiz{
         $requete="select * from QUIZZES where QuizID = '$idQuiz';";
-        $requete_get_question = "select * from QUESTIONS where QuizID = '$idQuiz';";
         $resultat=$this->bd->query($requete);
-        $lesquiz = [];
+        $lequiz = new Quiz(-1,"Quiz Non trouvée","","","");
         foreach ($resultat as $value) {
-            $lequiz = new Quiz(intval($value['QuizID']),$value['Titre'],$value['Description'],intval($value['TempsLimite']),$value['AutresProprietes']);
-            $lequiz->setLesQuestions();
-            $lesquiz[] = 
+            $lequiz = new Quiz(intval($value['QuizID']),$value['Titre'],$value['Description'],$value['TempsLimite'],$value['AutresProprietes']);
+            
         }
     
     
-        return $lesquiz;
+        return $lequiz;
     }
 
     public function getBestScores(int $idQuiz){
@@ -50,7 +48,11 @@ class QuizBD{
         return $lesScores;
     }
 
+    public function addBestScore(int $idQuiz, int $score, string $nom){
+        $requete = "update BESTSCORES SET Score = '$score', Nom = '$nom' WHERE QuizID = '$idQuiz' and Score < '$score';";
+        $resultat = $this->bd->query($requete);
+        
+    }
 
 }
 
-?>

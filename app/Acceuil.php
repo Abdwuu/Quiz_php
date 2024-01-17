@@ -2,6 +2,8 @@
 
 require_once 'index.php';
 
+session_start();
+
 $lesQuizz = $QUIZBD->get_all_quiz();
 
 ?>

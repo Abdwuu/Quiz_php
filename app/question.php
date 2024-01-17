@@ -2,9 +2,9 @@
 
 require 'index.php';
 
-$lequiz = $QuizBD->get_quiz($_GET['idQuiz']);
 
-
+$lequiz = $QUIZBD->get_quiz($_POST['quiz']);
+$lequiz->setLesQuestions(  $QUESTIONBD->get_question($lequiz->getIdQuiz()) )
 ?>
 
 <!DOCTYPE html>

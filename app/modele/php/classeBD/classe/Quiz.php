@@ -10,13 +10,13 @@ class Quiz implements IRender{
     private int $idQuiz;
     private string $titre;
     private string $description;
-    private int $tempslimite;
+    private string $tempslimite;
 
     private string $autre;
 
     private array $lesQuestions;
 
-    public function __construct(int $idQuiz,string $titre,string $description,int $tempslimite,string $autre){
+    public function __construct(int $idQuiz,string $titre,string $description,string $tempslimite,string $autre){
         $this->idQuiz = $idQuiz;
         $this->titre = $titre;
         $this->description = $description;
