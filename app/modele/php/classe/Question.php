@@ -24,7 +24,6 @@ class Question implements IRender{
         $this->lespts = $lespts;
         $this->autre = $autre;
         $this->lesReponses = [];
-        $this->setLesReponses();
     }
 
     public function getIdQuestion(){
@@ -53,19 +52,6 @@ class Question implements IRender{
 
     public function getLesReponses(){
         return $this->lesReponses;
-    }
-
-    public function setLesReponses(){
-
-        $bd = connect_bd();
-        $requete = "select * from REPONSES where QuestionID = '$this->idQuestion';";
-        $resultat = $bd->query($requete);
-        foreach ($resultat as $value) {
-            $this->lesReponses[] = new Reponse(intval($value['ReponseID']),intval($value['QuestionID']),$value['TexteReponse'],boolval($value['EstCorrecte']));
-        }
-
-
-
     }
 
     public function setEnonce($enonce){
