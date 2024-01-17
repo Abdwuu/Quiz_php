@@ -24,11 +24,12 @@ class QuizBD{
 
     public function get_quiz(int $idQuiz){
         $requete="select * from QUIZZES where QuizID = '$idQuiz';";
+        $requete_get_question = "select * from QUESTIONS where QuizID = '$idQuiz';";
         $resultat=$this->bd->query($requete);
         $lesquiz = [];
         foreach ($resultat as $value) {
             $lequiz = new Quiz(intval($value['QuizID']),$value['Titre'],$value['Description'],intval($value['TempsLimite']),$value['AutresProprietes']);
-            $lequiz->setLesQuestions($this->get_question($idQuiz));
+            $lequiz->setLesQuestions();
             $lesquiz[] = 
         }
     
