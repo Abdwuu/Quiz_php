@@ -1,6 +1,6 @@
 <?php
-define('USER',"susu");
-define('PASSWD',"susu");
-define('SERVER',"localhost");
-define('BASE',"quizzPhp");
+define('USER',"fofana");
+define('PASSWD',"fofana");
+define('SERVER',"servinfo-maria");
+define('BASE',"DBfofana");
 ?>

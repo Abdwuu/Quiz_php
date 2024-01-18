@@ -10,9 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tempsLimite = $_POST['tempsLimite'];
     $autresProprietes = $_POST['autresProprietes'];
 
-    $quizBD = new QuizBD($BD);
 
-    $quizBD->ajouter_quiz($titre, $description, $tempsLimite, $autresProprietes);
+    QUIZBD->ajouter_quiz($titre, $description, $tempsLimite, $autresProprietes);
 
     header("Location: Acceuil.php");
     exit();

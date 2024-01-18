@@ -1,5 +1,7 @@
 <?php
 
+require_once 'config/connexion.php';
+
 require_once 'vue/Input/Form.php';
 require_once 'vue/Input/InputText.php';
 require_once 'vue/Input/InputPassword.php';
@@ -30,7 +32,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 function validateUser($username, $password) {
-    return $username === 'free' && $password === 'free';
+
+    $bd = connect_bd();
+
+    $requete = "select * from USER";
+    $resultat = $bd->query($requete);
+
+    foreach ($resultat as $value) {
+        if ($value['Nom'] === $username && $value['MotDePasse'] === $password) {
+            return true;
+        }
+    }
+
+    return false;
+    
 }
 
 $form = new Form('POST','login.php');
