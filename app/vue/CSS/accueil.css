@@ -55,7 +55,6 @@ button:hover {
 
 form {
 display: flex;
-/* justify-content: space-between; */
 align-items: center;
 gap: 19px;
 padding-left: 24px;
@@ -91,6 +90,5 @@ flex-direction: column;
 span {
     color: #007BFF;
     font-weight: bold;
-    /* le texte sera en majuscule */
     text-transform: uppercase;
 }

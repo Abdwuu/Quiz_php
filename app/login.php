@@ -10,25 +10,18 @@ session_start();
 
 
 if(isset($_SESSION['user_id'])) {
-    // Rediriger si l'utilisateur est déjà connecté
     header("Location: Acceuil.php");
     exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Traitement du formulaire de connexion
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Vous devez implémenter la logique de validation des informations d'identification ici
-    // Vérification dans la base de données, par exemple
     $userExists = validateUser($username, $password);
     echo $userExists;
     if ($userExists) {
-        // Enregistrez l'ID de l'utilisateur dans la session
-        $_SESSION['user_id'] = $username; // Remplacez par l'ID réel de l'utilisateur
-
-        // Rediriger vers la page d'accueil
+        $_SESSION['user_id'] = $username;
         header("Location: Acceuil.php");
         exit();
     } else {

@@ -20,7 +20,7 @@ h1 {
 .points {
     font-size: 3em;
     font-weight: bold;
-    color: #28a745; /* Couleur verte pour une note élevée */
+    color: #28a745;
     margin-bottom: 20px;
 }
 

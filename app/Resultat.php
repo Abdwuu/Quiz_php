@@ -25,9 +25,9 @@ if ($points_gagner > $meilleur_score){
 echo "<h1>Vous avez gagné $points_gagner points</h1>";
 
 
-if ($meilleur_score == $points_gagner){
-    echo "<h1>Vous avez le meilleur score</h1>";
-}
+// if ($meilleur_score == $points_gagner){
+//     echo "<h1>Vous avez le meilleur score</h1>";
+// }
 
 
 
@@ -35,7 +35,7 @@ if ($meilleur_score == $points_gagner){
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
