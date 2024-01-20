@@ -1,6 +1,6 @@
 <?php
-define('USER',"fofana");
-define('PASSWD',"fofana");
-define('SERVER',"servinfo-maria");
-define('BASE',"DBfofana");
+define('USER',"root");
+define('PASSWD',"Abdoulahi");
+define('SERVER',"localhost");
+define('BASE',"Test");
 ?>
