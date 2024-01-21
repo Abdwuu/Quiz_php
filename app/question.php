@@ -8,7 +8,7 @@ $lequiz->setLesQuestions(  $QUESTIONBD->get_question($lequiz->getIdQuiz()) )
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +22,7 @@ $lequiz->setLesQuestions(  $QUESTIONBD->get_question($lequiz->getIdQuiz()) )
 
 <div class="container">
     <h1>Quizz : <?php echo $lequiz->getTitre() ?></h1>
+    <h2>Description : <?php echo $lequiz->getDescription() ?></h2>
 
     <form action="Resultat.php" method="POST">
 
@@ -34,8 +35,6 @@ $lequiz->setLesQuestions(  $QUESTIONBD->get_question($lequiz->getIdQuiz()) )
         foreach ($les_questions as $question) {
             echo $question->render();
         }
-        
-        // si le quiz n'est pas trouver on affiche un message d'erreur
         if($lequiz->getIdQuiz() == -1){
             echo "<a class='retour' href='Acceuil.php'>Retour</a>";
         }else{
@@ -43,9 +42,25 @@ $lequiz->setLesQuestions(  $QUESTIONBD->get_question($lequiz->getIdQuiz()) )
         }
 
         ?>
-
+    <h2 id="timer">Temps restant : 00:00</h2>
     </form>
 </div>
+<script>
+var timeLeft = <?php echo $lequiz->getTempsLimite(); ?> * 60;
+var timerElement = document.getElementById('timer');
 
+function updateTimer() {
+    var minutes = Math.floor(timeLeft / 60);
+    var seconds = timeLeft % 60;
+    timerElement.textContent = 'Temps restant : ' + minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+
+    timeLeft--;
+    if (timeLeft < 0) {
+        document.querySelector('form').submit();
+    }
+}
+
+setInterval(updateTimer, 1000);
+</script>
 </body>
 </html>

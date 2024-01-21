@@ -1,14 +1,9 @@
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-section {
-    padding: 20px;
 }
 
 .container {
@@ -31,14 +26,14 @@ label {
     font-weight: bold;
 }
 
-select {
+input, textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
     box-sizing: border-box;
 }
 
-button, .retour {
+button {
     background-color: #007BFF;
     color: #fff;
     border: none;
@@ -51,44 +46,4 @@ button, .retour {
 
 button:hover {
     background-color: #0056b3;
-}
-
-form {
-display: flex;
-align-items: center;
-gap: 19px;
-padding-left: 24px;
-flex-direction: column;
-}
-
-.retour{
-    display: inline;
-}
-
-
-
-.titre {
-    color: #007BFF;
-}
-
-.button-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.unbutton {
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: #007BFF;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-span {
-    color: #007BFF;
-    font-weight: bold;
-    text-transform: uppercase;
 }
