@@ -35,6 +35,17 @@ class QuizBD{
         return $lequiz;
     }
 
+    public function get_quiz_by_title($titre) {
+        $requete="select * from QUIZZES where Titre = '$titre';";
+        $resultat=$this->bd->query($requete);
+        foreach ($resultat as $value) {
+            return new Quiz(intval($value['QuizID']),$value['Titre'],$value['Description'],$value['TempsLimite'],$value['AutresProprietes']);            
+        }
+    
+        return null;
+
+    }
+
     public function getBestScores(int $idQuiz){
         $requete = "select * from BESTNOTE where QuizID = '$idQuiz';";
         $resultat = $this->bd->query($requete);
@@ -62,15 +73,28 @@ class QuizBD{
         return $id;
     }
 
-    public function ajouter_quiz(string $titre, string $description, int $tempsLimite, string $autresProprietes){
-        $requete = "insert into QUIZZES (Titre, Description, TempsLimite, AutresProprietes) values ('$titre', '$description', '$tempsLimite', '$autresProprietes');";
-        $resultat = $this->bd->query($requete);
+    public function ajouter_quiz(string $titre, string $description, string $tempsLimite, string $autresProprietes){
+        try{
+            $requete = "insert into QUIZZES (Titre, Description, TempsLimite, AutresProprietes) values ('$titre', '$description', '$tempsLimite', '$autresProprietes');";
+            $resultat = $this->bd->query($requete);
+            if ($resultat) {
+                return true;
+            } else {
+                return false;
+            }
+        }catch(Exception $e){
+            return false;
+        }
+
     }
 
     public function ajouter_un_quiz(Quiz $quiz){
         $requete = "insert into QUIZZES (Titre, Description, TempsLimite, AutresProprietes) values ('".$quiz->getTitre()."', '".$quiz->getDescription()."', '".$quiz->getTempsLimite()."', '".$quiz->getAutre()."');";
         $resultat = $this->bd->query($requete);
     }
+
+
+
 
 }
 

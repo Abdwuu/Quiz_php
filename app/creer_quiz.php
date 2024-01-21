@@ -10,6 +10,14 @@
     <div class="container">
         <h1>Créer un nouveau Quiz</h1>
 
+        <?php
+            if (isset($_GET['erreur'])) {
+                if ($_GET['erreur'] == '1') {
+                    echo "<p class='erreur' style='color:red'  >Le nom du quiz à deja été utiliser.</p>";
+                }
+            }
+        ?>
+
         <form action="ajouter_quiz.php" method="post">
             <label for="titre">Titre du Quiz :</label>
             <input type="text" id="titre" name="titre" required>

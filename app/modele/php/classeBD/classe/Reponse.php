@@ -31,8 +31,15 @@ class Reponse implements IRender{
         return $this->valide;
     }
 
+
+
+    public function modifrender(): string{
+        return "<label><input type='checkbox' name='question{$this->idQuestion}' value='{$this->valide}'" . ($this->valide == 1 ? ' checked' : '') . "> : <input type='text' name='question{$this->idQuestion}' value='{$this->TexteReponse}'> Case Cocher = Bonne reponse </label>";
+    }
+    
+
     public function render(): string{
-        return "<label><input type='radio' name=question'$this->idQuestion' value='$this->valide' required>$this->TexteReponse</label>";
+        return "<label><input placeholder='Votre nouvelle reponse' type='radio' name=question'$this->idQuestion' value='$this->valide' required>$this->TexteReponse</label>";
     }
 
 }

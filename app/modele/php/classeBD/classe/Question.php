@@ -53,6 +53,24 @@ class Question implements IRender{
         return $this->lesReponses;
     }
 
+
+    public function getLesReponsesForModif(){
+        $html = "<div class='question'>";
+        $html .= "<h2>$this->enonce</h2>";
+        $html .= "<div class='options'>";
+        
+        foreach ($this->lesReponses as $reponse) {
+            $html .= $reponse->modifrender();
+        }
+        $html .= "<div id='ajout$this->idQuestion'></div>";
+        $html .= "<button onclick='ajout($this->idQuestion)'>Ajouter une reponse</button>";
+        $html .= "</div>";
+        $html .= "</div>";
+
+        return $html;
+    }
+
+
     public function setLesReponses(array $lesReponses){
         $this->lesReponses = $lesReponses;
     }
