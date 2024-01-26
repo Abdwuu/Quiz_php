@@ -44,6 +44,7 @@ $lequiz->setLesQuestions(  $QUESTIONBD->get_question($lequiz->getIdQuiz()) )
         ?>
     <h2 id="timer">Temps restant : 00:00</h2>
     </form>
+    <button onclick='afficherResultats()'>jes suis la</button>
 </div>
 <script>
 var timeLeft = <?php echo $lequiz->getTempsLimite(); ?> * 60;
@@ -58,6 +59,29 @@ function updateTimer() {
     if (timeLeft < 0) {
         document.querySelector('form').submit();
     }
+}
+
+function afficherResultats() {
+    var resultatsListe = document.createElement('ul');
+
+    // Parcourir toutes les questions
+    document.querySelectorAll('.question').forEach(function(question) {
+        var questionText = question.querySelector('h2').textContent;
+        var reponsesSelectionnees = [];
+
+        // Parcourir toutes les options de la question
+        question.querySelectorAll('input:checked').forEach(function(reponse) {
+            reponsesSelectionnees.push(reponse.parentNode.textContent.trim());
+        });
+
+        // Ajouter la question et les réponses sélectionnées à la liste
+        var resultatItem = document.createElement('li');
+        resultatItem.textContent = `${questionText}: ${reponsesSelectionnees.join(', ')}`;
+        resultatsListe.appendChild(resultatItem);
+    });
+
+    // Afficher la liste des résultats
+    document.body.appendChild(resultatsListe);
 }
 
 setInterval(updateTimer, 1000);

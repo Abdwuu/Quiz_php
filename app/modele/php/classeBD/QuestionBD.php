@@ -21,7 +21,7 @@ class QuestionBD{
 
         foreach ($resultat as $value) {
             $uneQuestion = new Question($value['QuestionID'],$value['QuizID'],$value['Enonce'],$value['TypeQuestion'],$value['lesPoints'],$value['AutresProprietes']);
-            $uneQuestion->setLesReponses((new ReponseBD($this->bd))->get_reponse($value['QuestionID']));
+            $uneQuestion->setLesReponses((new ReponseBD($this->bd))->get_reponse($value['QuestionID'],$value['TypeQuestion']));
             $lesQuestion[] = $uneQuestion;
         }
 

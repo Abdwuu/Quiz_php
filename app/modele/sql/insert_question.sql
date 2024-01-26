@@ -15,15 +15,16 @@ VALUES
 -- Ajout de QUESTIONS pour le quiz sur les dessins animés
 INSERT INTO QUESTIONS (QuestionID, QuizID, Enonce, TypeQuestion,lesPoints, AutresProprietes)
 VALUES
-    (1, 1, "Qui est l\'éternel ennemi de Tom dans Tom et Jerry ?", 'Choix multiple',1 ,'Difficulté: Facile'),
-    (2, 1, 'Quel personnage vit dans un ananas sous la mer ?', 'Choix multiple',1 ,'Difficulté: Facile'),
-    (3, 1, 'Quel personnage porte un chapeau magique dans Fantasia ?', 'Choix multiple',1 ,'Difficulté: Moyenne'),
-    (4, 2, 'Quel acteur joue le rôle de John Wick ?', 'Choix multiple',1 ,'Difficulté: Moyenne'),
-    (5, 2, 'Quel acteur joue le rôle de John McClane dans Die Hard ?', 'Choix multiple',1 ,'Difficulté: Moyenne'),
-    (6, 2, 'Quel acteur joue le rôle de John Rambo dans Rambo ?', 'Choix multiple',1 ,'Difficulté: Moyenne'),
-    (7, 3, 'Quel est le nom du personnage principal dans The Legend of Zelda ?', 'Choix multiple',1 ,'Difficulté: Difficile'),
-    (8, 3, 'Quel est le nom du personnage principal dans Final Fantasy ?', 'Choix multiple',1 ,'Difficulté: Difficile'),
-    (9, 3, 'Quel est le nom du personnage principal dans Metal Gear Solid ?', 'Choix multiple',1 ,'Difficulté: Difficile');
+    (1, 1, "Qui est l\'éternel ennemi de Tom dans Tom et Jerry ?", 'Choix unique',1 ,'Difficulté: Facile'),
+    (2, 1, 'Quel personnage vit dans un ananas sous la mer ?', 'Choix unique',1 ,'Difficulté: Facile'),
+    (3, 1, 'Quel personnage porte un chapeau magique dans Fantasia ?', 'Choix unique',1 ,'Difficulté: Moyenne'),
+    (4, 2, 'Quel acteur joue le rôle de John Wick ?', 'Choix unique',1 ,'Difficulté: Moyenne'),
+    (5, 2, 'Quel acteur joue le rôle de John McClane dans Die Hard ?', 'Choix unique',1 ,'Difficulté: Moyenne'),
+    (6, 2, 'Quel acteur joue le rôle de John Rambo dans Rambo ?', 'Choix unique',1 ,'Difficulté: Moyenne'),
+    (7, 3, 'Quel est le nom du personnage principal dans The Legend of Zelda ?', 'Choix unique',1 ,'Difficulté: Difficile'),
+    (8, 3, 'Quel est le nom du personnage principal dans Final Fantasy ?', 'Choix unique',1 ,'Difficulté: Difficile'),
+    (9, 3, 'Quel est le nom du personnage principal dans Metal Gear Solid ?', 'Choix unique',1 ,'Difficulté: Difficile'),
+    (10, 1,'Quels sont les personnages faisant partie du dessin animé "Les Winx"','Choix multiple',1 ,'Difficulté: Difficile');
     
 -- Ajout de réponses pour les QUESTIONS
 
@@ -56,4 +57,9 @@ VALUES
     (25, 8, 'Aerith', FALSE, 'Autre option'),
     (26, 9, 'Solid Snake', TRUE, 'Autre option'),
     (27, 9, 'Liquid Snake', FALSE, 'Autre option'),
-    (28, 9, 'Big Boss', FALSE, 'Autre option');
+    (28, 9, 'Big Boss', FALSE, 'Autre option'),
+    (29,10, 'Bloom', TRUE, 'Autre option'),
+    (30,10, 'Stella', TRUE, 'Autre option'),
+    (31,10, 'Sulfus', FALSE, 'Autre option'),
+    (32,10, 'Musa', TRUE, 'Autre option'),
+    (33,10, 'Dolce', FALSE, 'Autre option');

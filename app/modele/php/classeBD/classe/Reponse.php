@@ -8,11 +8,14 @@ class Reponse implements IRender{
     private string $TexteReponse;
     private bool $valide;
 
-    public function __construct(int $idReponse,int $idQuestion,string $TexteReponse,bool $valide){
+    private string $proprieter;
+
+    public function __construct(int $idReponse,int $idQuestion,string $TexteReponse,bool $valide,string $proprieter){
         $this->idReponse = $idReponse;
         $this->idQuestion = $idQuestion;
         $this->TexteReponse = $TexteReponse;
         $this->valide = $valide;
+        $this->proprieter = $proprieter;
     }
 
     public function getIdReponse(){
@@ -39,11 +42,13 @@ class Reponse implements IRender{
     
 
     public function render(): string{
-        return "<label><input placeholder='Votre nouvelle reponse' type='radio' name=question'$this->idQuestion' value='$this->valide' required>$this->TexteReponse</label>";
+        if ($this->proprieter == "Choix multiple") {
+            return "<label><input placeholder='Votre nouvelle reponse' type='checkbox' name='question{$this->idQuestion}[]' value='{$this->idReponse}'>$this->TexteReponse</label>";
+        }   
+        return "<label><input placeholder='Votre nouvelle reponse' type='radio' name=question$this->idQuestion value='$this->idReponse' required>$this->TexteReponse</label>";
     }
 
 }
-
 
 
 
