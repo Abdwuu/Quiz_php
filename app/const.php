@@ -13,6 +13,9 @@ $QUIZBD = new QuizBD($BD);
 
 $QUESTIONBD = new QuestionBD($BD);
 
+$REPONSEBD = new ReponseBD($BD);
+
 
 define('QUIZBD', $QUIZBD);
 define('QUESTIONBD', $QUESTIONBD);
+define('REPONSEBD', $REPONSEBD);

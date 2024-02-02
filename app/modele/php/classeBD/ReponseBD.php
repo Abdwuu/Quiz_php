@@ -27,6 +27,15 @@ class ReponseBD{
         return $lesReponses;
     }
 
+    public function get_nom_reponse($idReponse){
+        $requete = "select * from REPONSES where ReponseID = '$idReponse';";
+        $resultat = $this->bd->query($requete);
+        foreach ($resultat as $value) {
+            return $value['TexteReponse'];
+        }
+        return null;
+    }
+
 
 
 }

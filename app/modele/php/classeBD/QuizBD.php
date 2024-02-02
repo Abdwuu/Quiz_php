@@ -116,8 +116,16 @@ class QuizBD{
             if (is_array($reponseUtilisateur)) {
                 foreach ($reponseUtilisateur as $reponse) {
                     $feedbackQuestion['reponsesCorrectes'][] = $reponse;
-                    $feedbackQuestion['correct'] = $this->reponseEstCorrecte($reponse);
-                    $feedbackQuestion['points'] += $feedbackQuestion['correct'];
+
+                    if (is_array($reponse) && count($reponse) > 1){
+                        foreach ($reponse as $value) {
+                            $feedbackQuestion['correct'] = $this->reponseEstCorrecte($value);
+                            $feedbackQuestion['points'] += $feedbackQuestion['correct'];
+                        }
+                    }else{
+                        $feedbackQuestion['correct'] = $this->reponseEstCorrecte($reponse);
+                        $feedbackQuestion['points'] += $feedbackQuestion['correct'];
+                    }
                 }
             } else {
                 $feedbackQuestion['reponsesCorrectes'][] = $reponseUtilisateur;
@@ -151,7 +159,7 @@ class QuizBD{
         $requete = "select * from REPONSES where ReponseID = '$reponse';";
         $resultat = $this->bd->query($requete);
         foreach ($resultat as $value) {
-            return intval($value['Valide']);
+            return intval($value['EstCorrecte']);
         }
         return 0;
     }

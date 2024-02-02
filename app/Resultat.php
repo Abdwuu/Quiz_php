@@ -11,16 +11,20 @@ $dico = array();
 $reponsesUtilisateur = array();
 
 foreach ($_POST as $key => $value) {
-    echo ' '.$key.' '.$value.' ';
-    echo '<br>';
+//     if (is_array($value)){
+//         foreach ($value as $val){
+//             echo ' '.$key.' '.$val.' ';
+//         }
+//     } else {
+
+//     echo ' '.$key.' '.$value.' ';
+//     echo '<br>';
+// }
 
     // Vérifie si la clé commence par "question" (pour les questions à choix unique)
     if (strpos($key, 'question') === 0 && !is_array($value)) {
         // Récupère l'id de la question
         $idQuestion = substr($key, 8);
-        echo $idQuestion . 'la question';
-        // sauter une ligne 
-        echo '<br>';
         // Stocke l'id de la réponse choisie dans le tableau
         $reponsesUtilisateur[$idQuestion] = $value;
     }
@@ -29,46 +33,20 @@ foreach ($_POST as $key => $value) {
     if (strpos($key, 'question') === 0 && is_array($value)) {
         // Récupère l'id de la question
         $idQuestion = substr($key, 8);
-        // echo $idQuestion . ' la question';
-        // echo '<br>';
 
-        // Stocke les ids des réponses choisies dans le tableau
-        // echo 'intVal' . intval($idQuestion) . '<br>';
         $reponsesUtilisateur[$idQuestion][] = $value;
-        // foreach ($value as $key2 => $value2) {
-        //     echo $key2 .' '.$value2. 'test';
-        // }
+
 
     }
     $nbre_question++;
 }
 
-// echo '<br>';
-// echo 'Voici le tableau des réponses de l\'utilisateur';
-// echo '<br>';
-// foreach ($reponsesUtilisateur as $key => $value) {
-//     if (is_array($value)) {
-//         foreach ($value as $key2 => $value2) {
-//             echo $key2 .' '.$value2. ' im here';
-//             echo '<br>';
-
-//         }
-//     }else{
-//         echo $key .' '.$value. ' test';
-//         echo '<br>';
-
-//     }
-// }
 
 $liste = QUIZBD->calculerScoreEtFeedback($reponsesUtilisateur);
 
 
 $points_gagner = $liste['scoreTotal'];
 $feedback = $liste['feedback'];
-
-// foreach ($feedback as $key => $value) {
-//     echo $key . ' ' . $value . 'test';
-// }
 
 // Affiche le tableau des réponses de l'utilisateur
 
@@ -82,10 +60,6 @@ if ($points_gagner > $meilleur_score){
 
 echo "<h1>Vous avez gagné $points_gagner points</h1>";
 
-
-// if ($meilleur_score == $points_gagner){
-//     echo "<h1>Vous avez le meilleur score</h1>";
-// }
 
 
 
@@ -133,8 +107,9 @@ echo "<h1>Vous avez gagné $points_gagner points</h1>";
     echo "<div class='meilleur_score'>Meilleur score : <span style='color: #dc3545;'>$meilleur_score</span></div>";
     echo "<a class='retour' href='Acceuil.php'>Retour</a>";
     
+    echo "</div>";
     
-    
+    echo "<div class='container'>";
 
 // Affiche le feedback pour chaque question
 foreach ($feedback as $nomQuestion => $feedbackQuestion) {
@@ -146,10 +121,13 @@ foreach ($feedback as $nomQuestion => $feedbackQuestion) {
     
     if (is_array($feedbackQuestion['reponsesUtilisateur'])) {
         foreach ($feedbackQuestion['reponsesUtilisateur'] as $reponse => $value) {
-            echo "<div class='reponse'>$value</div>";
+            foreach ($value as $val){
+                $estCorrecte = QUIZBD->reponseEstCorrecte($val) ?  "Correcte" : "Incorrecte";
+                echo "<div class='reponse'>" . REPONSEBD->get_nom_reponse($val) . " -> " . $estCorrecte . "</div>";
+            }
         }
     } else {
-        echo "<div class='reponse'>{$feedbackQuestion['reponsesUtilisateur']}</div>";
+        echo "<div class='reponse'>" .  REPONSEBD->get_nom_reponse($feedbackQuestion['reponsesUtilisateur']) . "</div>";
     }
 
     echo "</div>";
@@ -166,6 +144,8 @@ foreach ($feedback as $nomQuestion => $feedbackQuestion) {
     echo "</div>";
 }
 echo "</div>";
+echo "</div>";
+
 
         
     ?>
