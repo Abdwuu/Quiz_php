@@ -26,7 +26,7 @@ $questions = QUESTIONBD->get_question($quiz->getIdQuiz());
 
 </head>
 <body>
-    <div class="container">
+    <form method="POST" action="modifier.php" class="container">
         <div class="quiz-details">
             <h2><?php echo $quiz->getTitre(); ?></h2>
             <p><?php echo $quiz->getDescription(); ?></p>
@@ -38,7 +38,7 @@ $questions = QUESTIONBD->get_question($quiz->getIdQuiz());
 
         <?php foreach ($questions as $question) {
             
-         echo $question->getLesReponsesForModif();
+        $question->getLesReponsesForModif();
             
         }
 
@@ -48,15 +48,15 @@ $questions = QUESTIONBD->get_question($quiz->getIdQuiz());
 
 
     <script>
-        function ajout(idQuestion){
-            var div = document.createElement("div");
-            div.innerHTML = "<label> <input type='checkbox' name='question" + idQuestion + "' > : <input type='text' name='question" + idQuestion + "'> Case Cocher = Bonne reponse </label>";
         
+        function ajout(idQuestion,typeQuestion){
+            var div = document.createElement("div");
+            div.innerHTML = "<label> <input type=" +typeQuestion + " name='question" + idQuestion + "' > : <input type='text' name='question" + idQuestion + "'> Case Cocher = Bonne reponse </label>";
             document.getElementById("ajout" + idQuestion).appendChild(div);
         }
     </script>
 
-
-
+    <input type="submit" value="Modifier" name="modifier">
+    </form>
 </body>
 </html>
