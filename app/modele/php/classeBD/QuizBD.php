@@ -35,8 +35,8 @@ class QuizBD{
         return $lequiz;
     }
 
-    public function get_quiz_by_title($titre) {
-        $requete="select * from QUIZZES where Titre = '$titre';";
+    public function get_quiz_by_title(string $titre) {
+        $requete="select * from QUIZZES where Titre = ". '"' . $titre. '"' ." ;";
         $resultat=$this->bd->query($requete);
         foreach ($resultat as $value) {
             return new Quiz(intval($value['QuizID']),$value['Titre'],$value['Description'],$value['TempsLimite'],$value['AutresProprietes']);            

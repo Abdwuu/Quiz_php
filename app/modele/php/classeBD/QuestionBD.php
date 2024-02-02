@@ -28,7 +28,14 @@ class QuestionBD{
         return $lesQuestion;
     } 
 
-    
+    public function questionEstMultiple(int $idQuestion){
+        $requete = "select * from QUESTIONS where QuestionID = '$idQuestion';";
+        $resultat = $this->bd->query($requete);
+        foreach ($resultat as $value) {
+            return $value['TypeQuestion'] == "Choix multiple" ? "checkbox" : "radio";
+        }
+        return null;
+    }
 
 }
 

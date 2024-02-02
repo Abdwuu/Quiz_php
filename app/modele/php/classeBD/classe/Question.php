@@ -55,20 +55,21 @@ class Question implements IRender{
 
 
     public function getLesReponsesForModif(){
-        $html = "<div class='question'>";
-        $html .= "<h2>$this->enonce</h2>";
-        $html .= "<div class='options'>";
+        echo"<div class='question'>";
+        echo "<h2>$this->enonce</h2>";
+        echo "<div class='options'>";
         
         foreach ($this->lesReponses as $reponse) {
-            $html .= $reponse->modifrender();
+            echo $reponse->modifrender();
         }
-        $html .= "<div id='ajout$this->idQuestion'></div>";
-        $html .= "<button onclick='ajout($this->idQuestion)'>Ajouter une reponse</button>";
-        $html .= "</div>";
-        $html .= "</div>";
+        echo "<div id='ajout$this->idQuestion'></div>";
+        $type = $this->typequestion == "Choix unique" ? "radio" : "checkbox";
+        $letype = "ajout($this->idQuestion,$type)";
+        echo "<button type='button' onclick='ajout($this->idQuestion, \"$type\")'>Ajouter une réponse</button>";
+        echo "</div>";
+        echo "</div>";
 
-        return $html;
-    }
+       }
 
 
     public function setLesReponses(array $lesReponses){
